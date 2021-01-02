@@ -1,7 +1,7 @@
 import XCTest
 
-import app_scaffold_iosTests
+import AppScaffoldTests
 
 var tests = [XCTestCaseEntry]()
-tests += app_scaffold_iosTests.allTests()
+tests += AppScaffoldTests.allTests()
 XCTMain(tests)
