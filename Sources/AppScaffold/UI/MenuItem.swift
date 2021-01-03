@@ -13,6 +13,11 @@ public struct MenuItem: Hashable, Identifiable {
     public let title: String?
     public let image: UIImage?
     public let id = UUID()
+    
+    public init(title: String?, image: UIImage?) {
+        self.title = title
+        self.image = image
+    }
 }
 
 #endif
@@ -24,6 +29,11 @@ public struct MenuItem: Hashable, Identifiable {
     public let title: String?
     public let image: NSImage?
     public let id = UUID()
+    
+    public init(title: String?, image: UIImage?) {
+        self.title = title
+        self.image = image
+    }
 }
 
 #endif

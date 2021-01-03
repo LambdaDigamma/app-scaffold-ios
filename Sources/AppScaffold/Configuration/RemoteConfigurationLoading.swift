@@ -8,7 +8,7 @@
 import Foundation
 import Combine
 
-protocol RemoteConfigurationLoading {
+public protocol RemoteConfigurationLoading {
 
     associatedtype Configuration
 
@@ -16,29 +16,29 @@ protocol RemoteConfigurationLoading {
     
 }
 
-class AnyRemoteConfigurationLoader<Configuration>: RemoteConfigurationLoading {
+public class AnyRemoteConfigurationLoader<Configuration>: RemoteConfigurationLoading {
     
     private let _fetch: () -> AnyPublisher<Configuration, Error>
     
-    init<Loader: RemoteConfigurationLoading>(remoteConfigurationLoader: Loader) where Loader.Configuration == Configuration {
-        _fetch = remoteConfigurationLoader.fetch
+    public init<Loader: RemoteConfigurationLoading>(wrappedLoader: Loader) where Loader.Configuration == Configuration {
+        _fetch = wrappedLoader.fetch
     }
     
-    func fetch() -> AnyPublisher<Configuration, Error> {
+    public func fetch() -> AnyPublisher<Configuration, Error> {
         return _fetch()
     }
     
 }
 
-class DefaultRemoteConfigurationLoader<Configuration: AppConfigurable>: RemoteConfigurationLoading {
+public class DefaultRemoteConfigurationLoader<Configuration: AppConfigurable>: RemoteConfigurationLoading {
     
-    let configurationURL: URL
+    public let configurationURL: URL
     
-    init(configurationURL: URL) {
+    public init(configurationURL: URL) {
         self.configurationURL = configurationURL
     }
     
-    func fetch() -> AnyPublisher<Configuration, Error> {
+    public func fetch() -> AnyPublisher<Configuration, Error> {
         return URLSession.shared.dataTaskPublisher(for: configurationURL)
             .map(\.data)
             .decode(type: Configuration.self, decoder: JSONDecoder())

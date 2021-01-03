@@ -8,25 +8,33 @@
 import Foundation
 import Combine
 
-class ConfigurationProvider<Configuration: AppConfigurable> {
+public class ConfigurationProvider<Configuration: AppConfigurable> {
 
-    @Published private(set) var configuration: Configuration
+    @Published public private(set) var configuration: Configuration
     
     private let localConfigurationLoader: AnyLocalConfigurationLoader<Configuration>
     private let remoteConfigurationLoader: AnyRemoteConfigurationLoader<Configuration>
     
-    init(remoteConfigurationLoader: AnyRemoteConfigurationLoader<Configuration>,
+    public init(remoteConfigurationLoader: AnyRemoteConfigurationLoader<Configuration>,
          localConfigurationLoader: AnyLocalConfigurationLoader<Configuration>) {
 
         self.remoteConfigurationLoader = remoteConfigurationLoader
         self.localConfigurationLoader = localConfigurationLoader
 
+        self.configuration = localConfigurationLoader.fetch()
+    }
+    
+    public convenience init<RemoteLoader: RemoteConfigurationLoading, LocalLoader: LocalConfigurationLoading>(
+        remoteLoader: RemoteLoader, localLoader: LocalLoader
+    ) where RemoteLoader.Configuration == Configuration, LocalLoader.Configuration == Configuration {
+        self.init(remoteConfigurationLoader: AnyRemoteConfigurationLoader(wrappedLoader: remoteLoader),
+                  localConfigurationLoader: AnyLocalConfigurationLoader(wrappedLoader: localLoader))
     }
     
     private var cancellable: AnyCancellable?
     private var syncQueue = DispatchQueue(label: "config_queue_\(UUID().uuidString)")
 
-    func updateConfiguration() {
+    public func updateConfiguration() {
 
         syncQueue.sync {
 
@@ -45,5 +53,5 @@ class ConfigurationProvider<Configuration: AppConfigurable> {
         }
 
     }
-
+    
 }

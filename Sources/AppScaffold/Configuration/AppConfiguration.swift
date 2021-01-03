@@ -7,6 +7,6 @@
 
 import Foundation
 
-protocol AppConfigurable: Codable {
+public protocol AppConfigurable: Codable {
     var minVersion: String { get set }
 }

@@ -15,7 +15,7 @@ protocol Instantiatable {
 
 extension Instantiatable where Self: UIViewController {
     
-    static func instantiate() -> Self {
+    internal static func instantiate() -> Self {
         
         let newViewController = Self()
         
@@ -23,7 +23,7 @@ extension Instantiatable where Self: UIViewController {
         
     }
     
-    static func instantiateFromStoryboard() -> Self {
+    internal static func instantiateFromStoryboard() -> Self {
         
         let fullName = NSStringFromClass(self)
         
