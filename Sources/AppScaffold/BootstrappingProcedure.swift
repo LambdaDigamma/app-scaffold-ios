@@ -15,4 +15,12 @@ public protocol BootstrappingProcedure {
     
 }
 
+public extension Collection where Element == BootstrappingProcedure {
+    
+    func execute(with application: UIApplication) {
+        self.forEach { $0.execute(with: application) }
+    }
+    
+}
+
 #endif
