@@ -9,7 +9,7 @@
 import UIKit
 
 
-open class BaseLaunchArgumentsHandler: BootstrappingProcedure {
+open class BaseLaunchArgumentsHandler: BootstrappingProcedureStep {
     
     /// This is beeing used to determine whether the
     /// application is run in fastlane snapshotting mode.

@@ -9,13 +9,15 @@
 
 import UIKit
 
-public protocol BootstrappingProcedure {
+public protocol BootstrappingProcedureStep {
     
     func execute(with application: UIApplication)
     
 }
 
-public extension Collection where Element == BootstrappingProcedure {
+public typealias BootstrappingProcedure = [BootstrappingProcedureStep]
+
+public extension Collection where Element == BootstrappingProcedureStep {
     
     func execute(with application: UIApplication) {
         self.forEach { $0.execute(with: application) }
