@@ -16,7 +16,7 @@ extension UIViewController {
     /// - Parameters:
     ///   - swiftUIView: The SwiftUI `View` to add as a child.
     ///   - view: The `UIView` instance to which the view should be added.
-    public func addSubSwiftUIView<Content>(_ swiftUIView: Content, to view: UIView) where Content : View {
+    public func addSubView<Content>(_ swiftUIView: Content, to view: UIView) where Content : View {
         let hostingController = UIHostingController(rootView: swiftUIView)
         
         /// Add as a child of the current view controller.

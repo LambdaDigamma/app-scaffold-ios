@@ -30,7 +30,7 @@ public struct MenuItem: Hashable, Identifiable {
     public let image: NSImage?
     public let id = UUID()
     
-    public init(title: String?, image: UIImage?) {
+    public init(title: String?, image: NSImage?) {
         self.title = title
         self.image = image
     }

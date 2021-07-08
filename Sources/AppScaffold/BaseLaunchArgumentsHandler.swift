@@ -6,8 +6,9 @@
 //  Copyright © 2021 LambdaDigamma. All rights reserved.
 //
 
-import UIKit
+#if canImport(UIKit)
 
+import UIKit
 
 open class BaseLaunchArgumentsHandler: BootstrappingProcedureStep {
     
@@ -66,3 +67,5 @@ open class BaseLaunchArgumentsHandler: BootstrappingProcedureStep {
     }
     
 }
+
+#endif

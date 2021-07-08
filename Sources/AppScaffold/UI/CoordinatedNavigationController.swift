@@ -9,11 +9,11 @@
 
 import UIKit
 
-public class CoordinatedNavigationController: UINavigationController {
+open class CoordinatedNavigationController: UINavigationController {
     
-    public weak var coordinator: Coordinator?
+    open weak var coordinator: Coordinator?
     
-    public var menuItem: MenuItem? {
+    open var menuItem: MenuItem? {
         
         didSet {
             
