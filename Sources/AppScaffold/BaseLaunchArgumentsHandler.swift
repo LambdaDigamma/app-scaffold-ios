@@ -12,6 +12,10 @@ import UIKit
 
 open class BaseLaunchArgumentsHandler: BootstrappingProcedureStep {
     
+    /// Determine whether to remove all user defaults of
+    /// the application bundle when supplying the reset flag.
+    open var shouldClearUserDefaultsOnReset: Bool = false
+    
     /// This is beeing used to determine whether the
     /// application is run in fastlane snapshotting mode.
     public static var isSnapshotting: Bool = UserDefaults.standard.bool(forKey: "FASTLANE_SNAPSHOT")
@@ -45,8 +49,10 @@ open class BaseLaunchArgumentsHandler: BootstrappingProcedureStep {
             return
         }
         
-        let defaultsName = Bundle.main.bundleIdentifier!
-        userDefaults.removePersistentDomain(forName: defaultsName)
+        if shouldClearUserDefaultsOnReset {
+            guard let defaultsName = Bundle.main.bundleIdentifier else { return }
+            userDefaults.removePersistentDomain(forName: defaultsName)
+        }
         
         // TODO: Add any reset specific code here.
         // For example clear all databases, caches, authentication, etc.

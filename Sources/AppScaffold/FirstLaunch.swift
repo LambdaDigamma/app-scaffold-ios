@@ -14,8 +14,10 @@ public final class FirstLaunch {
         return !wasLaunchedBefore
     }
     
-    public init(getWasLaunchedBefore: () -> Bool,
-         setWasLaunchedBefore: (Bool) -> ()) {
+    public init(
+        getWasLaunchedBefore: () -> Bool,
+        setWasLaunchedBefore: (Bool) -> ()
+    ) {
         let wasLaunchedBefore = getWasLaunchedBefore()
         self.wasLaunchedBefore = wasLaunchedBefore
         if !wasLaunchedBefore {
@@ -24,8 +26,10 @@ public final class FirstLaunch {
     }
     
     public convenience init(userDefaults: UserDefaults, key: String) {
-        self.init(getWasLaunchedBefore: { userDefaults.bool(forKey: key) },
-                  setWasLaunchedBefore: { userDefaults.set($0, forKey: key) })
+        self.init(
+            getWasLaunchedBefore: { userDefaults.bool(forKey: key) },
+            setWasLaunchedBefore: { userDefaults.set($0, forKey: key) }
+        )
     }
     
 }
