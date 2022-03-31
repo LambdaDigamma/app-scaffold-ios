@@ -33,6 +33,7 @@ open class SplitViewController: UISplitViewController, UISplitViewControllerDele
         self.firstLaunch = firstLaunch
         self.sidebarController = sidebarController
         self.secondaryRootViewControllers = secondaryRootViewControllers
+        self.compactController = compactController
         super.init(style: style)
     }
     
