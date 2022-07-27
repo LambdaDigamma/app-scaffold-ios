@@ -5,16 +5,28 @@
 //  Created by Lennart Fischer on 31.03.22.
 //
 
-#if canImport(UIKit)
+import OSLog
+
+extension OSLog {
+    
+    /// Use the Bundle ID as the subsystem
+    internal static var subsystem = Bundle.main.bundleID
+    
+    /// UI
+    internal static let ui = OSLog(subsystem: subsystem, category: "ui")
+    
+}
+
+
+#if canImport(UIKit) && !os(tvOS)
 import UIKit
 import Combine
-import OSLog
 
 open class SplitViewController: UISplitViewController, UISplitViewControllerDelegate, SidebarViewControllerDelegate {
     
     public var firstLaunch: FirstLaunch
     public var cancellables = Set<AnyCancellable>()
-    public let logger: Logger = Logger(.default)
+    public let logger: Logger = Logger(.ui)
     public var sidebarItems: [SidebarItem] = []
     
     open var sidebarController: SidebarViewController

@@ -5,7 +5,7 @@
 //  Created by Lennart Fischer on 31.03.22.
 //
 
-#if canImport(UIKit)
+#if canImport(UIKit) && !os(tvOS)
 import UIKit
 import Combine
 
