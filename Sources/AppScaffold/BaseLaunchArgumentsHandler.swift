@@ -6,10 +6,11 @@
 //  Copyright © 2021 LambdaDigamma. All rights reserved.
 //
 
-#if canImport(UIKit)
+#if canImport(UIKit) && os(iOS)
 
 import UIKit
 
+@available(iOS 14.0, *)
 open class BaseLaunchArgumentsHandler: BootstrappingProcedureStep {
     
     /// Determine whether to remove all user defaults of

@@ -5,10 +5,11 @@
 //  Created by Lennart Fischer on 03.01.21.
 //
 
-#if canImport(UIKit)
+#if canImport(UIKit) && os(iOS)
 
 import UIKit
 
+@available(iOS 14.0, *)
 public protocol ApplicationControlling {
     
     var firstLaunch: FirstLaunch { get set }
@@ -18,6 +19,7 @@ public protocol ApplicationControlling {
     
 }
 
+@available(iOS 14.0, *)
 extension ApplicationControlling {
     
     func rootViewController() -> UIViewController {

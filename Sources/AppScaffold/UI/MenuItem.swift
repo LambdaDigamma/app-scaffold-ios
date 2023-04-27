@@ -5,10 +5,11 @@
 //  Created by Lennart Fischer on 02.01.21.
 //
 
-#if canImport(UIKit)
+#if canImport(UIKit) && os(iOS)
 
 import UIKit
 
+@available(iOS 14.0, *)
 public struct MenuItem: Hashable, Identifiable {
     public let title: String?
     public let image: UIImage?
@@ -25,6 +26,7 @@ public struct MenuItem: Hashable, Identifiable {
 #if canImport(AppKit)
 import AppKit
 
+@available(macOS 10.15, *)
 public struct MenuItem: Hashable, Identifiable {
     public let title: String?
     public let image: NSImage?

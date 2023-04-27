@@ -4,7 +4,7 @@ import PackageDescription
 
 let package = Package(
     name: "AppScaffold",
-    platforms: [.iOS(.v14), .macOS(.v10_15), .watchOS(.v6), .tvOS(.v14)],
+    platforms: [.iOS(.v14), .macOS(.v10_15), .watchOS(.v7), .tvOS(.v14)],
     products: [
         .library(
             name: "AppScaffold",

@@ -7,10 +7,11 @@
 
 import Foundation
 
-#if canImport(UIKit)
+#if canImport(UIKit) && os(iOS)
 
 import UIKit
 
+@available(iOS 14.0, *)
 public protocol Coordinator: AnyObject {
     
     var navigationController: CoordinatedNavigationController { get set }

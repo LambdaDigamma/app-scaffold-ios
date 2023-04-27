@@ -18,10 +18,11 @@ extension OSLog {
 }
 
 
-#if canImport(UIKit) && !os(tvOS)
+#if canImport(UIKit) && !os(tvOS) && os(iOS)
 import UIKit
 import Combine
 
+@available(iOS 14.0, *)
 open class SplitViewController: UISplitViewController, UISplitViewControllerDelegate, SidebarViewControllerDelegate {
     
     public var firstLaunch: FirstLaunch

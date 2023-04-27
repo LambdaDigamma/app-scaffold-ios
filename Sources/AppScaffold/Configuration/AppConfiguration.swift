@@ -7,6 +7,7 @@
 
 import Foundation
 
+@available(iOS 14.0, *)
 public protocol AppConfigurable: Codable {
     var minVersion: String { get set }
 }

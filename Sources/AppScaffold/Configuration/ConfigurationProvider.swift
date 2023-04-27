@@ -8,6 +8,7 @@
 import Foundation
 import Combine
 
+
 public class ConfigurationProvider<Configuration: AppConfigurable> {
 
     @Published public private(set) var configuration: Configuration

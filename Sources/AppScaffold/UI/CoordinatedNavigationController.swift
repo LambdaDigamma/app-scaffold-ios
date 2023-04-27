@@ -5,10 +5,11 @@
 //  Created by Lennart Fischer on 02.01.21.
 //
 
-#if canImport(UIKit)
+#if canImport(UIKit) && os(iOS)
 
 import UIKit
 
+@available(iOS 14.0, *)
 open class CoordinatedNavigationController: UINavigationController {
     
     open weak var coordinator: Coordinator?

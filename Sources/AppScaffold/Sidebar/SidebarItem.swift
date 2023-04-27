@@ -9,6 +9,7 @@
 
 import UIKit
 
+@available(iOS 14.0, *)
 public struct SidebarItem: Hashable {
     
     public let title: String?

@@ -5,11 +5,12 @@
 //  Created by Lennart Fischer on 03.01.21.
 //
 
-#if canImport(UIKit)
+#if canImport(UIKit) && os(iOS)
 
 import UIKit
 import SwiftUI
 
+@available(iOS 14.0, *)
 extension UIViewController {
     
     /// Add a SwiftUI `View` as a child of the input `UIView`.
