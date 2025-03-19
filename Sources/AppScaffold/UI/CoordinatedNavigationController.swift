@@ -24,9 +24,13 @@ open class CoordinatedNavigationController: UINavigationController {
                 return
             }
             
-            tabBarItem = UITabBarItem(title: menuItem.title,
-                                      image: menuItem.image,
-                                      selectedImage: nil)
+            tabBarItem = UITabBarItem(
+                title: menuItem.title,
+                image: menuItem.image,
+                selectedImage: nil
+            )
+            tabBarItem.accessibilityIdentifier = menuItem.accessibilityIdentifier
+            
             title = menuItem.title
             
         }

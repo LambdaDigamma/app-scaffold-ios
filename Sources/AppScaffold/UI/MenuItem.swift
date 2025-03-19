@@ -13,11 +13,13 @@ import UIKit
 public struct MenuItem: Hashable, Identifiable {
     public let title: String?
     public let image: UIImage?
+    public let accessibilityIdentifier: String?
     public let id = UUID()
     
-    public init(title: String?, image: UIImage?) {
+    public init(title: String?, image: UIImage?, accessibilityIdentifier: String? = nil) {
         self.title = title
         self.image = image
+        self.accessibilityIdentifier = accessibilityIdentifier
     }
 }
 
@@ -30,11 +32,13 @@ import AppKit
 public struct MenuItem: Hashable, Identifiable {
     public let title: String?
     public let image: NSImage?
+    public let accessibilityIdentifier: String?
     public let id = UUID()
     
-    public init(title: String?, image: NSImage?) {
+    public init(title: String?, image: NSImage?, accessibilityIdentifier: String? = nil) {
         self.title = title
         self.image = image
+        self.accessibilityIdentifier = accessibilityIdentifier
     }
 }
 
