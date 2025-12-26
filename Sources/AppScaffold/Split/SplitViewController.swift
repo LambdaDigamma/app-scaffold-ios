@@ -25,10 +25,10 @@ import Combine
 @available(iOS 14.0, *)
 open class SplitViewController: UISplitViewController, UISplitViewControllerDelegate, SidebarViewControllerDelegate {
     
-    public var firstLaunch: FirstLaunch
-    public var cancellables = Set<AnyCancellable>()
+    open var firstLaunch: FirstLaunch
+    open var cancellables = Set<AnyCancellable>()
     public let logger: Logger = Logger(.ui)
-    public var sidebarItems: [SidebarItem] = []
+    open var sidebarItems: [SidebarItem] = []
     
     open var sidebarController: SidebarViewController
     open var compactController: UIViewController?
@@ -58,11 +58,11 @@ open class SplitViewController: UISplitViewController, UISplitViewControllerDele
         NotificationCenter.default.removeObserver(self)
     }
     
-    public var isSnapshotting: Bool {
+    open var isSnapshotting: Bool {
         return UserDefaults.standard.bool(forKey: "FASTLANE_SNAPSHOT")
     }
     
-    public var displayCompact: Bool {
+    open var displayCompact: Bool {
         return self.traitCollection.horizontalSizeClass == .compact
     }
     
@@ -96,7 +96,7 @@ open class SplitViewController: UISplitViewController, UISplitViewControllerDele
     
     // MARK: - Trait Collection Changes -
     
-    public override func traitCollectionDidChange(_ previousTraitCollection: UITraitCollection?) {
+    open override func traitCollectionDidChange(_ previousTraitCollection: UITraitCollection?) {
         
         if let previousTraitCollection = previousTraitCollection {
             
@@ -127,7 +127,7 @@ open class SplitViewController: UISplitViewController, UISplitViewControllerDele
     
     // MARK: - UISplitViewControllerDelegate -
     
-    public func splitViewController(_ svc: UISplitViewController, willChangeTo displayMode: UISplitViewController.DisplayMode) {
+    open func splitViewController(_ svc: UISplitViewController, willChangeTo displayMode: UISplitViewController.DisplayMode) {
         
         self.logger.info("MainSplitViewController changes to \(displayMode.rawValue, privacy: .public)")
         
@@ -135,7 +135,7 @@ open class SplitViewController: UISplitViewController, UISplitViewControllerDele
     
     // MARK: - Actions -
     
-    public func selectSidebarItem(_ item: SidebarItem) {
+    open func selectSidebarItem(_ item: SidebarItem) {
         
         self.preferredDisplayMode = .oneBesideSecondary
         self.presentsWithGesture = false
